@@ -15,7 +15,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            var score = "";
+            string score = "";
             var tempScore = 0;
             if (_player1Score == _player2Score)
             {
@@ -38,10 +38,10 @@ namespace Tennis
             }
             else if (_player1Score >= 4 || _player2Score >= 4)
             {
-                var minusResult = _player1Score - _player2Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
+                var playersScoreDifference = _player1Score - _player2Score;
+                if (playersScoreDifference == 1) score = "Advantage player1";
+                else if (playersScoreDifference == -1) score = "Advantage player2";
+                else if (playersScoreDifference >= 2) score = "Win for player1";
                 else score = "Win for player2";
             }
             else
