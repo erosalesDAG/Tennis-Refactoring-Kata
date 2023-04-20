@@ -51,16 +51,14 @@ namespace Tennis
             return score;
         }
 
-        private string GetScoreWhenAnyPlayerIsOnAdvantage()
+        private bool IsCurrentResultTied()
         {
-            var playersScoreDifference = _player1Score - _player2Score;
-            return playersScoreDifference switch
-            {
-                1 => "Advantage player1",
-                -1 => "Advantage player2",
-                >= 2 => "Win for player1",
-                _ => "Win for player2"
-            };
+            return _player1Score == _player2Score;
+        }
+
+        private bool IsAnyPlayerOnAdvantage()
+        {
+            return _player1Score >= 4 || _player2Score >= 4;
         }
 
         private string GetScoreWhenGameIsTied()
@@ -73,15 +71,16 @@ namespace Tennis
                 _ => "Deuce"
             };
         }
-
-        private bool IsAnyPlayerOnAdvantage()
+        private string GetScoreWhenAnyPlayerIsOnAdvantage()
         {
-            return _player1Score >= 4 || _player2Score >= 4;
-        }
-
-        private bool IsCurrentResultTied()
-        {
-            return _player1Score == _player2Score;
+            var playersScoreDifference = _player1Score - _player2Score;
+            return playersScoreDifference switch
+            {
+                1 => "Advantage player1",
+                -1 => "Advantage player2",
+                >= 2 => "Win for player1",
+                _ => "Win for player2"
+            };
         }
     }
 }
