@@ -17,7 +17,7 @@ namespace Tennis
         {
             string score = "";
             var tempScore = 0;
-            if (_player1Score == _player2Score)
+            if (IsCurrentResultTied())
             {
                 score = _player1Score switch
                 {
@@ -62,6 +62,11 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        private bool IsCurrentResultTied()
+        {
+            return _player1Score == _player2Score;
         }
     }
 }
