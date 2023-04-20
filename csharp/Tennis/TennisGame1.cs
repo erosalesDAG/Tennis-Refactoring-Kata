@@ -15,7 +15,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "";
+            var score = "";
             if (IsCurrentResultTied())
             {
                 score = GetScoreWhenGameIsTied();
@@ -58,7 +58,7 @@ namespace Tennis
             return score;
         }
 
-        protected string GetScoreWhenGameIsTied()
+        private string GetScoreWhenGameIsTied()
         {
             return _player1Score switch
             {
