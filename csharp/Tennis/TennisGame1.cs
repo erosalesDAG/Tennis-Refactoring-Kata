@@ -80,21 +80,29 @@ namespace Tennis
                     currentPoints = _player2Score;
                 }
 
-                switch (currentPoints)
-                {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
-                }
+                score += GetStringByPoint(currentPoints);
+            }
+
+            return score;
+        }
+
+        private string GetStringByPoint(int currentPoints)
+        {
+            var score = string.Empty;
+            switch (currentPoints)
+            {
+                case 0:
+                    score += "Love";
+                    break;
+                case 1:
+                    score += "Fifteen";
+                    break;
+                case 2:
+                    score += "Thirty";
+                    break;
+                case 3:
+                    score += "Forty";
+                    break;
             }
 
             return score;
