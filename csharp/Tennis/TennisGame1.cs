@@ -69,18 +69,18 @@ namespace Tennis
 
         private string GetScoreWhenGameIsNotTiedOrOnAdvantage()
         {
-            string score = String.Empty;
+            var score = string.Empty;
             for (var i = 1; i < 3; i++)
             {
-                var tempScore = 0;
-                if (i == 1) tempScore = _player1Score;
+                var currentPoints = 0;
+                if (i == 1) currentPoints = _player1Score;
                 else
                 {
                     score += "-";
-                    tempScore = _player2Score;
+                    currentPoints = _player2Score;
                 }
 
-                switch (tempScore)
+                switch (currentPoints)
                 {
                     case 0:
                         score += "Love";
