@@ -74,18 +74,18 @@ namespace Tennis
             {
                 if (i == 1)
                 {
-                    score += GetStringByPoint(_player1Score);
+                    score += GetPointsToWordsTranslation(_player1Score);
                 }
                 else
                 {
                     score += "-";
-                    score += GetStringByPoint(_player2Score);
+                    score += GetPointsToWordsTranslation(_player2Score);
                 }
             }
             return score;
         }
 
-        private string GetStringByPoint(int currentPoints)
+        private string GetPointsToWordsTranslation(int currentPoints)
         {
             var score = string.Empty;
             switch (currentPoints)
