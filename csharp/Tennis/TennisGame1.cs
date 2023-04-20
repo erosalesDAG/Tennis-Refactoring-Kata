@@ -15,7 +15,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "";
+            var score = "";
             var tempScore = 0;
             if (_player1Score == _player2Score)
             {
