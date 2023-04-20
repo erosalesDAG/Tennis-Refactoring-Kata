@@ -60,15 +60,13 @@ namespace Tennis
 
         protected string GetScoreWhenGameIsTied()
         {
-            string score;
-            score = _player1Score switch
+            return _player1Score switch
             {
                 0 => "Love-All",
                 1 => "Fifteen-All",
                 2 => "Thirty-All",
                 _ => "Deuce"
             };
-            return score;
         }
 
         private bool IsAnyPlayerOnAdvantage()
