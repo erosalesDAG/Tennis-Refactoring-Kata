@@ -17,29 +17,25 @@ namespace Tennis
 
         public string GetScore()
         {
-            var score = "";
-            if (IsCurrentResultTied())
+            if (GameIsTied())
             {
-                score = GetScoreWhenGameIsTied();
-            }
-            else if (IsAnyPlayerOnAdvantage())
-            {
-                score = GetScoreWhenAnyPlayerIsOnAdvantage();
-            }
-            else
-            {
-                score = GetScoreWhenGameIsNotTiedOrOnAdvantage();
+                return GetScoreWhenGameIsTied();
             }
 
-            return score;
+            if (OnePlayerIsOnAdvantage())
+            {
+                return GetScoreWhenOnePlayerIsOnAdvantage();
+            }
+
+            return GetScoreWhenGameIsNotTiedOrOnAdvantage();
         }
 
-        private bool IsCurrentResultTied()
+        private bool GameIsTied()
         {
             return _player1Score == _player2Score;
         }
 
-        private bool IsAnyPlayerOnAdvantage()
+        private bool OnePlayerIsOnAdvantage()
         {
             return _player1Score >= 4 || _player2Score >= 4;
         }
@@ -55,7 +51,7 @@ namespace Tennis
             };
         }
 
-        private string GetScoreWhenAnyPlayerIsOnAdvantage()
+        private string GetScoreWhenOnePlayerIsOnAdvantage()
         {
             var playersScoreDifference = _player1Score - _player2Score;
             return playersScoreDifference switch
@@ -85,7 +81,7 @@ namespace Tennis
             return score;
         }
 
-        private string GetPointsToWordsTranslation(int currentPoints)
+        private static string GetPointsToWordsTranslation(int currentPoints)
         {
             var score = string.Empty;
             switch (currentPoints)
