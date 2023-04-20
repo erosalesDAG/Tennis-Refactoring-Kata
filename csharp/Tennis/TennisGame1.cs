@@ -22,14 +22,7 @@ namespace Tennis
             }
             else if (IsAnyPlayerOnAdvantage())
             {
-                var playersScoreDifference = _player1Score - _player2Score;
-                score = playersScoreDifference switch
-                {
-                    1 => "Advantage player1",
-                    -1 => "Advantage player2",
-                    >= 2 => "Win for player1",
-                    _ => "Win for player2"
-                };
+                score = GetScoreWhenAnyPlayerIsOnAdvantage();
             }
             else
             {
@@ -56,6 +49,18 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        private string GetScoreWhenAnyPlayerIsOnAdvantage()
+        {
+            var playersScoreDifference = _player1Score - _player2Score;
+            return playersScoreDifference switch
+            {
+                1 => "Advantage player1",
+                -1 => "Advantage player2",
+                >= 2 => "Win for player1",
+                _ => "Win for player2"
+            };
         }
 
         private string GetScoreWhenGameIsTied()
