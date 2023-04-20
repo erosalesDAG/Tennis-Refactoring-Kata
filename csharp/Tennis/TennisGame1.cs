@@ -1,3 +1,5 @@
+using System;
+
 namespace Tennis
 {
     public class TennisGame1 : ITennisGame
@@ -26,28 +28,9 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    var tempScore = 0;
-                    if (i == 1) tempScore = _player1Score;
-                    else { score += "-"; tempScore = _player2Score; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
-                }
+                score = GetScoreWhenGameIsNotTiedOrOnAdvantage();
             }
+
             return score;
         }
 
@@ -71,6 +54,7 @@ namespace Tennis
                 _ => "Deuce"
             };
         }
+
         private string GetScoreWhenAnyPlayerIsOnAdvantage()
         {
             var playersScoreDifference = _player1Score - _player2Score;
@@ -82,6 +66,38 @@ namespace Tennis
                 _ => "Win for player2"
             };
         }
+
+        private string GetScoreWhenGameIsNotTiedOrOnAdvantage()
+        {
+            string score = String.Empty;
+            for (var i = 1; i < 3; i++)
+            {
+                var tempScore = 0;
+                if (i == 1) tempScore = _player1Score;
+                else
+                {
+                    score += "-";
+                    tempScore = _player2Score;
+                }
+
+                switch (tempScore)
+                {
+                    case 0:
+                        score += "Love";
+                        break;
+                    case 1:
+                        score += "Fifteen";
+                        break;
+                    case 2:
+                        score += "Thirty";
+                        break;
+                    case 3:
+                        score += "Forty";
+                        break;
+                }
+            }
+
+            return score;
+        }
     }
 }
-
