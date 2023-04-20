@@ -72,17 +72,16 @@ namespace Tennis
             var score = string.Empty;
             for (var i = 1; i < 3; i++)
             {
-                var currentPoints = 0;
-                if (i == 1) currentPoints = _player1Score;
+                if (i == 1)
+                {
+                    score += GetStringByPoint(_player1Score);
+                }
                 else
                 {
                     score += "-";
-                    currentPoints = _player2Score;
+                    score += GetStringByPoint(_player2Score);
                 }
-
-                score += GetStringByPoint(currentPoints);
             }
-
             return score;
         }
 
