@@ -16,16 +16,9 @@ namespace Tennis
         public string GetScore()
         {
             string score = "";
-            var tempScore = 0;
             if (IsCurrentResultTied())
             {
-                score = _player1Score switch
-                {
-                    0 => "Love-All",
-                    1 => "Fifteen-All",
-                    2 => "Thirty-All",
-                    _ => "Deuce"
-                };
+                score = GetScoreWhenGameIsTied();
             }
             else if (IsAnyPlayerOnAdvantage())
             {
@@ -42,6 +35,7 @@ namespace Tennis
             {
                 for (var i = 1; i < 3; i++)
                 {
+                    var tempScore = 0;
                     if (i == 1) tempScore = _player1Score;
                     else { score += "-"; tempScore = _player2Score; }
                     switch (tempScore)
@@ -61,6 +55,19 @@ namespace Tennis
                     }
                 }
             }
+            return score;
+        }
+
+        protected string GetScoreWhenGameIsTied()
+        {
+            string score;
+            score = _player1Score switch
+            {
+                0 => "Love-All",
+                1 => "Fifteen-All",
+                2 => "Thirty-All",
+                _ => "Deuce"
+            };
             return score;
         }
 
