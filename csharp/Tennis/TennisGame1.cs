@@ -27,7 +27,7 @@ namespace Tennis
                     _ => "Deuce"
                 };
             }
-            else if (_player1Score >= 4 || _player2Score >= 4)
+            else if (IsAnyPlayerOnAdvantage())
             {
                 var playersScoreDifference = _player1Score - _player2Score;
                 score = playersScoreDifference switch
@@ -62,6 +62,11 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        private bool IsAnyPlayerOnAdvantage()
+        {
+            return _player1Score >= 4 || _player2Score >= 4;
         }
 
         private bool IsCurrentResultTied()
